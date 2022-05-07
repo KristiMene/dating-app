@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column">
+
+    <div class="block">
+        <div class="media">
+        <div class="media-right">
+        <a href="{%url 'myapp:profile_list' %}">
+        <button class="button is-dark is-outlined is-fullwidth">
+            All profiles
+        </button>
+        </a>
+        </div>
+        </div>
+        <div class="media">
+            <div class="media-center">
+               <h1 class="title is-3">
+               {{profile.user.username|default:"Not found"}}'s profile
+               </h1>
+        </div>
+        </div>
+    <div class="buttons has-addons">
+        <button class="button is-success"> Like </button>
+        <button class="button is-danger"> Dislike </button>
+    </div>
+
+    </div>
+
+</div>
+{%endblock content%}

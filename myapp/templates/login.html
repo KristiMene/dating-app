@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% block page_title %}Login{% endblock %} {% block content %}
+
+
+<html>
+    <head>
+        <title>LoginView</title>
+        
+    </head>
+
+    <body>
+<form method="POST">{% csrf_token %}
+    
+<!-- form variable -->    
+ {{ form.as_p }} 
+
+  <input type="submit" name="sumbit">
+</form>
+<a href="{% url 'password_reset' %}">Reset password</a>
+    </body>
+
+</html>
+
+{% endblock %}
