@@ -1,13 +1,15 @@
 from datetime import datetime
+
 from django.db import models
 from django.conf import settings
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=300, default="", blank=False)
+    MALE = "MALE"
+    FEMALE = "FEMALE"
+    BOTH = "BOTH"
 
-    GENDER = (("MALE", "Male"), ("FEMALE", "Female"))
+    GENDER = ((MALE, "Male"), (FEMALE, "Female"))
 
     RELATIONSHIP_STATUS = (
         ("NEVER MARRIED", "Never Married"),
@@ -16,7 +18,7 @@ class Profile(models.Model):
         ("SEPARATED", "Separated"),
     )
 
-    LOOKING_FOR = (("MALE", "Men"), ("FEMALE", "Women"), ("BOTH", "Both"))
+    LOOKING_FOR = ((MALE, "Men"), (FEMALE, "Women"), (BOTH, "Both"))
 
     EDUCATION = (
         ("HIGH SCHOOL", "High School"),
@@ -26,7 +28,9 @@ class Profile(models.Model):
         ("PHD / POST DOCTORAL", "PhD / Post Doctoral"),
     )
 
-    gender = models.CharField(choices=GENDER, default=" ", max_length=15)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=300, default="", blank=False)
+    gender = models.CharField(choices=GENDER, null=True, blank=True, max_length=15)
     relationship_status = models.CharField(
         choices=RELATIONSHIP_STATUS, default="", max_length=20
     )

@@ -21,11 +21,10 @@
             Change Password
             </button>
             </a>
-
             {% else %}
             You are not logged in. 
-            <a href "{% url 'login' %}">
-            <button class="button is-dark is-outlined is-fullwidth">Log in</button>
+            <a class="button is-dark is-outlined is-fullwidth" href="{% url 'myapp:login' %}">
+            Log in
             </a>
             {% endif %}
 

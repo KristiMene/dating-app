@@ -19,10 +19,13 @@
               </div>
               <div class="media-content">
                 <p class="title is-4">
-                  {{ profile.user.username }}
+                  {{ profile.user.get_full_name }}
                 </p>
                 <p class="subtitle is-6">
                   @{{ profile.user.username|lower }}
+                </p>
+                <p>
+                  Gender: {{ profile.gender }}
                 </p>
               </div>
             </div>
